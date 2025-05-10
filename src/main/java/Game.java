@@ -1,4 +1,12 @@
+/**
+ * Main game runner that initializes and runs the dungeon adventure.
+ */
 public class Game {
+    /**
+     * Entry point of the game.
+     *
+     * @param args command line arguments (not used)
+     */
     public static void main(String[] args) {
         // initialize some chambers
         Chamber[] chambers = new Chamber[] {

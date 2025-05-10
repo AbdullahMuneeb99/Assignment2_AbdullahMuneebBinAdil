@@ -1,8 +1,16 @@
-import java.util.Random;
-
+/**
+ * Handles the logic for combat between a player character and a monster.
+ */
 public class Fight {
-    private static final Random rand = new Random();
+    private static final java.util.Random rand = new java.util.Random();
 
+    /**
+     * Executes a fight round between the player and the monster.
+     * Rolls dice, compares stats, and applies damage accordingly.
+     *
+     * @param player  the player's character
+     * @param monster the monster to fight
+     */
     public static void execute(Character player, Monster monster) {
         int playerRoll = rand.nextInt(6) + 1;
         int monsterRoll = rand.nextInt(6) + 1;

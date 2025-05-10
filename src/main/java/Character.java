@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Abstract base class representing a game character with stats and inventory.
+ */
 public abstract class Character {
     protected String name;
     protected int strength;
@@ -10,6 +13,9 @@ public abstract class Character {
     protected Item mainHand;
     protected Item offHand;
 
+    /**
+     * Constructs a Character with given stats.
+     */
     public Character(String name, int strength, int craft, int health) {
         this.name = name;
         this.strength = strength;
@@ -18,22 +24,34 @@ public abstract class Character {
         this.inventory = new ArrayList<>();
     }
 
+    /**
+     * Adds an item to the character's inventory.
+     */
     public void pickUpItem(Item item) {
         inventory.add(item);
     }
 
+    /**
+     * Equips an item in the main hand if it's in the inventory.
+     */
     public void useItemInMainHand(Item item) {
         if (inventory.contains(item)) {
             mainHand = item;
         }
     }
 
+    /**
+     * Equips an item in the off-hand if it's in the inventory.
+     */
     public void useItemInOffHand(Item item) {
         if (inventory.contains(item)) {
             offHand = item;
         }
     }
 
+    /**
+     * Sets an item in either the main or off-hand.
+     */
     public void setItemInHand(Item item, String hand) {
         if ("main".equalsIgnoreCase(hand)) {
             this.mainHand = item;
@@ -42,12 +60,18 @@ public abstract class Character {
         }
     }
 
+    /**
+     * Gets the item equipped in the specified hand.
+     */
     public Item getItemInHand(String hand) {
         if ("main".equalsIgnoreCase(hand)) return mainHand;
         if ("off".equalsIgnoreCase(hand)) return offHand;
         return null;
     }
 
+    /**
+     * Returns the effective strength including equipped items.
+     */
     public int getEffectiveStrength() {
         int total = strength;
         if (mainHand != null) total += mainHand.getStrength();
@@ -55,6 +79,9 @@ public abstract class Character {
         return total;
     }
 
+    /**
+     * Returns the effective craft including equipped items.
+     */
     public int getEffectiveCraft() {
         int total = craft;
         if (mainHand != null) total += mainHand.getCraft();
@@ -62,22 +89,37 @@ public abstract class Character {
         return total;
     }
 
+    /**
+     * Reduces the character's health.
+     */
     public void reduceHealth(int amount) {
         health -= amount;
     }
 
+    /**
+     * Returns the current health.
+     */
     public int getHealth() {
         return health;
     }
 
+    /**
+     * Checks if the character is alive.
+     */
     public boolean isAlive() {
         return health > 0;
     }
 
+    /**
+     * Returns the character's inventory.
+     */
     public List<Item> getInventory() {
         return inventory;
     }
 
+    /**
+     * Returns the character's name.
+     */
     public String getName() {
         return name;
     }

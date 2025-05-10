@@ -2,9 +2,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 
+/**
+ * Provides a text-based user interface for playing the dungeon game.
+ */
 public class TextUI {
     private Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Starts and manages the gameplay loop.
+     *
+     * @param dungeon the dungeon to play through
+     */
     public void play(Dungeon dungeon) {
         GameState state = new GameState(new Wizard("Gandalf", 2, 5, 10), dungeon.getStartChamber());
         Character player = state.getPlayer();
@@ -36,17 +44,22 @@ public class TextUI {
         }
     }
 
+    /**
+     * Gets a list of available actions for the current game state.
+     *
+     * @param state   the current game state
+     * @param dungeon the dungeon being played
+     * @return list of available actions
+     */
     private List<Action> getAvailableActions(GameState state, Dungeon dungeon) {
         List<Action> actions = new java.util.ArrayList<>();
         Character player = state.getPlayer();
         Chamber chamber = state.getCurrentChamber();
 
-        // Pick up items
         for (Item item : new ArrayList<>(chamber.getItems())) {
             actions.add(new Pick(player, chamber, item));
         }
 
-        // Fight or Move through doors
         for (Door door : chamber.getDoors()) {
             if (door.isBlocked()) {
                 actions.add(new FightAction(player, door));
@@ -58,3 +71,4 @@ public class TextUI {
         return actions;
     }
 }
+

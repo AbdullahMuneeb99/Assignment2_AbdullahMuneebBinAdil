@@ -1,8 +1,14 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Unit tests for the Fight class which simulates battles between players and monsters.
+ */
 public class FightTest {
 
+    /**
+     * Tests that a weak monster can be defeated in battle.
+     */
     @Test
     public void testMonsterCanBeDefeated() {
         Character warrior = new Warrior("Hero", 10, 2, 30);
@@ -11,6 +17,9 @@ public class FightTest {
         assertFalse(goblin.isAlive());
     }
 
+    /**
+     * Tests that a player takes damage during combat with a strong monster.
+     */
     @Test
     public void testPlayerCanTakeDamage() {
         Character wizard = new Wizard("Mira", 2, 2, 10);
