@@ -1,5 +1,5 @@
 public class Warrior extends Character {
-    public Warrior(String name) {
-        super(name, 10, 3, 30); // Example stats
+    public Warrior(String name, int strength, int craft, int health) {
+        super(name, strength, craft, health);
     }
 }

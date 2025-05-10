@@ -1,4 +1,4 @@
-public abstract class Item {
+public class Item {
     private String name;
     private int strength;
     private int craft;

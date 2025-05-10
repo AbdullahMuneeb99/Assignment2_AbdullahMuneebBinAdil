@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-        <!-- JUnit for testing -->
+        <!-- JUnit 4 for testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

@@ -34,6 +34,20 @@ public abstract class Character {
         }
     }
 
+    public void setItemInHand(Item item, String hand) {
+        if ("main".equalsIgnoreCase(hand)) {
+            this.mainHand = item;
+        } else if ("off".equalsIgnoreCase(hand)) {
+            this.offHand = item;
+        }
+    }
+
+    public Item getItemInHand(String hand) {
+        if ("main".equalsIgnoreCase(hand)) return mainHand;
+        if ("off".equalsIgnoreCase(hand)) return offHand;
+        return null;
+    }
+
     public int getEffectiveStrength() {
         int total = strength;
         if (mainHand != null) total += mainHand.getStrength();
